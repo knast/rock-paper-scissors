@@ -43,10 +43,35 @@ function capitalizedLetter(string) { // Making user's input case in-sensitive
 
     return capitalizedString;
 }
-let playerChoice = prompt('Choose rock, paper or scissors').toString();
-let capitalizedChoice = capitalizedLetter(playerChoice);
 
-let computerChoice = getComputerChoice();
+function usersInput() {
+    let usersInput = prompt('Choose rock/paper/scissors').toString();
+    let finalUsersInput = capitalizedLetter(usersInput);
+    return finalUsersInput;
+}
 
-console.log(playRound(capitalizedChoice, computerChoice));
 
+
+
+function game() {
+
+    for(let i = 0; i < 5; i++) {
+
+        usersInput();
+        getComputerChoice();
+        let playerChoice = usersInput();
+        let computersChoice = getComputerChoice();
+        playRound(playerChoice, computersChoice);
+        console.log(playRound(playerChoice, computersChoice));
+        
+        
+
+
+
+        
+        
+
+    }
+}
+
+game();
