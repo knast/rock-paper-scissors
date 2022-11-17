@@ -1,4 +1,4 @@
-function getComputerChoice() {
+function getComputerChoice() { // Getting computer's choice
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     if (randomNumber == 1) {
         return "Rock";
@@ -10,7 +10,7 @@ function getComputerChoice() {
 }
 
 
-function playRound(playersChoice, computersChoice) {
+function playRound(playersChoice, computersChoice) { // Comparison of player's and computer's choice
     if (computersChoice == 'Rock' && playersChoice == 'Paper') {
         return "You win! Paper beats Rock!";
     } else if (computersChoice == 'Scissors' && playersChoice == 'Paper') {
@@ -33,17 +33,20 @@ function playRound(playersChoice, computersChoice) {
 }
 
 
-function capitalizedLetter(string) {
+function capitalizedLetter(string) { // Making user's input case in-sensitive
+
     let firstLetter = string.charAt(0);
+    let capitalizedFirstLetter = firstLetter.toUpperCase();
     let stringWithoutFirst = string.substring(1);
     let downcasedString = stringWithoutFirst.toLowerCase();
-    let capitalizedString = firstLetter.concat(downcasedString)
+    let capitalizedString = capitalizedFirstLetter.concat(downcasedString)
+
     return capitalizedString;
 }
+let playerChoice = prompt('Choose rock, paper or scissors').toString();
+let capitalizedChoice = capitalizedLetter(playerChoice);
 
-let playerChoice = prompt('Choose Rock/Paper/Scissors');
-let finalPlayerChoice = playerChoice.toString();
 let computerChoice = getComputerChoice();
 
-console.log(playRound(playerChoice, computerChoice));
+console.log(playRound(capitalizedChoice, computerChoice));
 
