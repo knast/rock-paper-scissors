@@ -32,6 +32,15 @@ function playRound(playersChoice, computersChoice) {
     }
 }
 
+
+function capitalizedLetter(string) {
+    let firstLetter = string.charAt(0);
+    let stringWithoutFirst = string.substring(1);
+    let downcasedString = stringWithoutFirst.toLowerCase();
+    let capitalizedString = firstLetter.concat(downcasedString)
+    return capitalizedString;
+}
+
 let playerChoice = prompt('Choose Rock/Paper/Scissors');
 let finalPlayerChoice = playerChoice.toString();
 let computerChoice = getComputerChoice();
