@@ -53,25 +53,3 @@ function usersInput() {
 
 
 
-function game() {
-
-    for(let i = 0; i < 5; i++) {
-
-        usersInput();
-        getComputerChoice();
-        let playerChoice = usersInput();
-        let computersChoice = getComputerChoice();
-        playRound(playerChoice, computersChoice);
-        console.log(playRound(playerChoice, computersChoice));
-        
-        
-
-
-
-        
-        
-
-    }
-}
-
-game();
