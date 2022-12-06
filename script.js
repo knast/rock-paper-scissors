@@ -1,4 +1,5 @@
 function getComputerChoice() { // Getting computer's choice
+    
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     if (randomNumber == 1) {
         return "Rock";
@@ -10,45 +11,116 @@ function getComputerChoice() { // Getting computer's choice
 }
 
 
-function playRound(playersChoice, computersChoice) { // Comparison of player's and computer's choice
-    if (computersChoice == 'Rock' && playersChoice == 'Paper') {
-        return "You win! Paper beats Rock!";
-    } else if (computersChoice == 'Scissors' && playersChoice == 'Paper') {
-        return 'You lose! Scissors beat Paper!'; 
-    } else if (computersChoice == 'Paper' && playersChoice == 'Paper') {
-        return "It's a draw!";
-    } else if (computersChoice == 'Rock' && playersChoice == 'Scissors') {
-        return "You lose! Rock beats Scissors!";
-    } else if (computersChoice == "Scissors" && playersChoice == 'Scissors') {
-        return "It's a draw!";
-    } else if (computersChoice == "Paper" && playersChoice == "Scissors") {
-        return "You win! Scissors beat Paper!"; 
-    } else if (computersChoice == "Rock" && playersChoice == "Rock") {
-        return "It's a draw!";
-    } else if (computersChoice == "Scissors" && playersChoice == "Rock") {
-        return "You win! Rock beats Scissors";
-    } else if (computersChoice == 'Paper' && playersChoice == "Rock") {
-        return "You lose! Paper beats Rock!";
+
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const userScore = document.querySelector('.user-score');
+const cpuScore = document.querySelector('.cpu-score');
+const body = document.querySelector('body');
+const scoreBox = document.querySelector('.score-box');
+const announcer = document.querySelector('.announcer');
+
+
+
+let finalUserScore = Number(userScore.textContent);
+let finalCpuScore = Number(cpuScore.textContent);
+
+let computerChoice = getComputerChoice();
+
+
+
+
+
+rock.addEventListener('click', () => {
+if(finalUserScore < 5 && finalCpuScore < 5) {
+    if (computerChoice == "Paper") {
+        finalCpuScore++;
+        cpuScore.textContent = finalCpuScore;
+        computerChoice = getComputerChoice();
+    } else if (computerChoice == "Scissors") {
+        finalUserScore++;
+        userScore.textContent = finalUserScore;
+        computerChoice = getComputerChoice();
+    } else if (computerChoice == "Rock") {
+        cpuScore.textContent = finalCpuScore;
+        userScore.textContent = finalUserScore;
+        computerChoice = getComputerChoice();
     }
+    
+} else if(finalUserScore == 5) {
+
+    cpuScore.textContent = finalCpuScore;
+    userScore.textContent = finalUserScore;
+    announcer.textContent = 'You win!';
+} else if(finalCpuScore == 5) {
+    cpuScore.textContent = finalCpuScore;
+    userScore.textContent = finalUserScore;
+    announcer.textContent = 'You lose!';
+} 
+}
+)
+
+paper.addEventListener('click', () => {
+
+    console.log(computerChoice);
+if (finalUserScore < 5 && finalCpuScore < 5) {
+    if(computerChoice == "Paper") {
+        cpuScore.textContent = finalCpuScore;
+        userScore.textContent = finalUserScore;
+        computerChoice = getComputerChoice();
+    } else if (computerChoice == "Scissors") {
+        finalCpuScore++;
+        cpuScore.textContent = finalCpuScore;
+        computerChoice = getComputerChoice();
+    } else if (computerChoice == "Rock") {
+        finalUserScore++;
+        userScore.textContent = finalUserScore;
+        computerChoice = getComputerChoice();
+    }
+} else if(finalUserScore == 5) {
+    cpuScore.textContent = finalCpuScore;
+    userScore.textContent = finalUserScore;
+    announcer.textContent = 'You win!';
+
+} else if (finalCpuScore == 5) {
+    cpuScore.textContent = finalCpuScore;
+    userScore.textContent = finalUserScore;
+    announcer.textContent = 'You lose!';
+}  
 }
 
+)
 
-function capitalizedLetter(string) { // Making user's input case in-sensitive
-
-    let firstLetter = string.charAt(0);
-    let capitalizedFirstLetter = firstLetter.toUpperCase();
-    let stringWithoutFirst = string.substring(1);
-    let downcasedString = stringWithoutFirst.toLowerCase();
-    let capitalizedString = capitalizedFirstLetter.concat(downcasedString)
-
-    return capitalizedString;
+scissors.addEventListener('click', () => {
+    console.log(computerChoice);
+if(finalUserScore < 5 && finalCpuScore < 5) {
+    if(computerChoice == "Paper") {
+        finalUserScore++;
+        userScore.textContent = finalUserScore;
+        computerChoice = getComputerChoice();
+    } else if (computerChoice == "Scissors") {
+        cpuScore.textContent = finalCpuScore;
+        userScore.textContent = finalUserScore;
+        computerChoice = getComputerChoice();
+    } else if (computerChoice == "Rock") {
+        finalCpuScore++;
+        cpuScore.textContent = finalCpuScore;
+        computerChoice = getComputerChoice();
+    }
+} else if(finalUserScore == 5) {
+    cpuScore.textContent = finalCpuScore;
+    userScore.textContent = finalUserScore;
+    announcer.textContent = 'You win!';
+} else if(finalCpuScore == 5) {
+    cpuScore.textContent = finalCpuScore;
+    userScore.textContent = finalUserScore;
+    announcer.textContent = 'You lose!';
+} 
 }
 
-function usersInput() {
-    let usersInput = prompt('Choose rock/paper/scissors').toString();
-    let finalUsersInput = capitalizedLetter(usersInput);
-    return finalUsersInput;
-}
+)
+
 
 
 
